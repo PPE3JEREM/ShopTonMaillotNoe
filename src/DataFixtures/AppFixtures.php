@@ -3,6 +3,10 @@
 namespace App\DataFixtures;
 
 use App\Entity\Sport;
+use App\Entity\Acheter;
+use App\Entity\Maillot;
+use App\Entity\Panier;
+use App\Entity\Equipe;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 
@@ -16,64 +20,50 @@ class AppFixtures extends Fixture
         $lesSports=$this->chargeFichier("sport.csv");
         foreach ($lesSports as $value) {
           $sport=new Sport();
-          $sport ->setId(intval($value[0]))
-                   ->setNom($value[1])
-                   ->setCouleur();
+          $sport   ->setId(intval($value[0]));
+          $sport   ->setLibelle($value[1]);
+          $sport   ->setImage($value[2]);
           $manager->persist($sport);
-          $this->addReference("style".$sport->getId(),$sport);
+          $this->addReference("sport".$sport->getId(),$sport);
+          $manager->flush();
+          
 
       }
-      $lesArtistes=$this->chargeFichier("artiste.csv");
-      $genres=["men","women"];
-        foreach ($lesArtistes as $value) {
-            $artiste=new Artiste();
-            $artiste ->setId(intval($value[0]))
-                     ->setNom($value[1])
-                     ->setDescription("<p>".join("</p><p>",$faker->paragraphs(5)). "</p>")
-                     ->setSite($faker->url())
-                     ->setImage('https://randomuser.me/api/portraits/%27.$faker-%3ErandomElement($genres).%22/%22.mt_rand(1,99).%22.jpg%22')
-                     ->setType($value[2]);
-            $manager->persist($artiste);
-            $this->addReference("artiste".$artiste->getId(),$artiste);
 
-        }
+        $lesEquipes=$this->chargeFichier("equipe.csv");
+        foreach ($lesEquipes as $value) {
+          $equipe=new Sport();
+          $equipe   ->setId(intval($value[0]));
+          $equipe   ->setLibelle($value[1]);
+          $equipe   ->setImage($value[2]);
+          $manager->persist($equipe);
+          $this->addReference("equipe".$equipe->getId(),$equipe);
+          $manager->flush();
+        
 
-        $lesAlbums=$this->chargeFichier("album.csv");
-        foreach ($lesAlbums as $value) {
-          $album=new Album();
-          $album ->setId(intval($value[0]))
-                 ->setNom($value[1])
-                 ->setDate(intval($value[2]))
-                 ->setImage("/images/daft-punk.jpg")
-                 ->addStyle($this->getReference("style".$value[3]))
-                 ->setArtiste($this->getReference("artiste".$value[4]));
-          $manager->persist($album); 
-          $this->addReference("album".$album->getId(), $album);
-        }
-
-        $lesMorceaux=$this->chargeFichier("morceau.csv");
-        foreach ($lesMorceaux as $value) {
-          $morceau=new Morceau();
-          $morceau  ->setId(intval($value[0]))
-                    ->setTitre($value[2])
-                    ->setAlbum($this->getReference("album".$value[1]))
-                    ->setPiste(intval($value[4]))
-                    ->setDuree(date("i:s",$value[3]));
-          $manager->persist($morceau);
-          $this->addReference("morceau".$morceau->getId(), $morceau);
-        }
-        $manager->flush();
     }
+    //     $lesMaillots=$this->chargeFichier("maillot.csv");
+    //         foreach ($lesMaillots as $value) {
+    //           $maillot=new Sport();
+    //           $maillot   ->setId(intval($value[0]));
+    //           $maillot   ->setLibelle($value[1]);
+    //           $maillot   ->setImage($value[2]);
+    //           $manager->persist($maillot);
+    //           $this->addReference("equipe".$maillot->getId(),$maillot);
+    //           $manager->flush();
+        
 
+    // }
+    }
     public function chargeFichier($fichier){
-      $fichierCsv=fopen(DIR."/".$fichier,"r");
+      $fichierCsv=fopen(__DIR__."/".$fichier,"r");
         while (!feof($fichierCsv)) {
           $data[]=fgetcsv($fichierCsv);
         }
         fclose($fichierCsv);
         return $data;
         
-
+    
     
     }
 

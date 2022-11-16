@@ -50,6 +50,14 @@ class Equipe
         return $this->id;
     }
 
+    public function setId(int $id): ?int
+    {
+        $this->id = $id;
+
+        return $this->id;
+    }
+
+
     public function getLibelle(): ?string
     {
         return $this->libelle;
