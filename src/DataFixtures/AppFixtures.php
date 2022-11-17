@@ -17,7 +17,6 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
-<<<<<<< HEAD
     //     $lesSports=$this->chargeFichier("sport.csv");
     //     foreach ($lesSports as $value) {
     //       $sport=new Sport();
@@ -37,7 +36,7 @@ class AppFixtures extends Fixture
     //     }
     //     fclose($fichierCsv);
     //     return $data;
-=======
+
         $lesSports=$this->chargeFichier("sport.csv");
         foreach ($lesSports as $value) {
           $sport=new Sport();
@@ -83,7 +82,6 @@ class AppFixtures extends Fixture
         }
         fclose($fichierCsv);
         return $data;
->>>>>>> b9ec44a3e2647b69c140cc4e292b8418415cdccd
         
     
     
