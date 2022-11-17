@@ -14,6 +14,7 @@ class AppFixtures extends Fixture
 {
         public function load(ObjectManager $manager): void
     {
+<<<<<<< HEAD
         // $product = new Product();
         // $manager->persist($product);
 
@@ -37,6 +38,8 @@ class AppFixtures extends Fixture
     //     fclose($fichierCsv);
     //     return $data;
 
+=======
+>>>>>>> 2771c11cab4ace7810323bfc3cb382fe6db86a57
         $lesSports=$this->chargeFichier("sport.csv");
         foreach ($lesSports as $value) {
           $sport=new Sport();
@@ -52,28 +55,37 @@ class AppFixtures extends Fixture
 
         $lesEquipes=$this->chargeFichier("equipe.csv");
         foreach ($lesEquipes as $value) {
-          $equipe=new Sport();
+          $equipe=new Equipe();
           $equipe   ->setId(intval($value[0]));
           $equipe   ->setLibelle($value[1]);
           $equipe   ->setImage($value[2]);
+          $equipe   ->setSport($this->getReference("sport".intval($value[3])));
           $manager->persist($equipe);
           $this->addReference("equipe".$equipe->getId(),$equipe);
           $manager->flush();
         
 
     }
-    //     $lesMaillots=$this->chargeFichier("maillot.csv");
-    //         foreach ($lesMaillots as $value) {
-    //           $maillot=new Sport();
-    //           $maillot   ->setId(intval($value[0]));
-    //           $maillot   ->setLibelle($value[1]);
-    //           $maillot   ->setImage($value[2]);
-    //           $manager->persist($maillot);
-    //           $this->addReference("equipe".$maillot->getId(),$maillot);
-    //           $manager->flush();
+        $lesMaillots=$this->chargeFichier("maillot.csv");
+            foreach ($lesMaillots as $value) {
+              $maillot=new maillot();
+              $maillot   ->setId(intval($value[0]));
+              $maillot   ->setTypeMaillot($value[1]);
+              $maillot   ->setSaison($value[2]);
+              $maillot   ->setImage($value[3]);
+              $maillot   ->setMatiere($value[4]);
+              $maillot   ->setTaille($value[5]);
+              $maillot   ->setPrix($value[6]);
+              $maillot   ->setDescription($value[7]);
+              $maillot   ->setDisponibilite($value[8]);
+              $maillot   ->setStock($value[9]);
+              $maillot   ->setEquipe($this->getReference("equipe".intval($value[10])));
+              $manager->persist($maillot);
+              $this->addReference("maillot".$maillot->getId(),$maillot);
+              $manager->flush();
         
 
-    // }
+    }
     }
     public function chargeFichier($fichier){
       $fichierCsv=fopen(__DIR__."/".$fichier,"r");
@@ -82,8 +94,12 @@ class AppFixtures extends Fixture
         }
         fclose($fichierCsv);
         return $data;
+<<<<<<< HEAD
         
     
+=======
+            
+>>>>>>> 2771c11cab4ace7810323bfc3cb382fe6db86a57
     
     }
 
