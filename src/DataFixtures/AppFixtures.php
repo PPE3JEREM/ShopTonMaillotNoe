@@ -17,6 +17,27 @@ class AppFixtures extends Fixture
         // $product = new Product();
         // $manager->persist($product);
 
+<<<<<<< HEAD
+    //     $lesSports=$this->chargeFichier("sport.csv");
+    //     foreach ($lesSports as $value) {
+    //       $sport=new Sport();
+    //       $sport ->setId(intval($value[0]))
+    //                ->setNom($value[1])
+    //                ->setCouleur();
+    //       $manager->persist($sport);
+    //       $this->addReference("style".$sport->getId(),$sport);
+
+    //   }
+    //      }
+
+    // public function chargeFichier($fichier){
+    //   $fichierCsv=fopen(DIR."/".$fichier,"r");
+    //     while (!feof($fichierCsv)) {
+    //       $data[]=fgetcsv($fichierCsv);
+    //     }
+    //     fclose($fichierCsv);
+    //     return $data;
+=======
         $lesSports=$this->chargeFichier("sport.csv");
         foreach ($lesSports as $value) {
           $sport=new Sport();
@@ -71,6 +92,7 @@ class AppFixtures extends Fixture
         }
         fclose($fichierCsv);
         return $data;
+>>>>>>> b9ec44a3e2647b69c140cc4e292b8418415cdccd
         
     
     
