@@ -78,6 +78,14 @@ class Maillot
         return $this->id;
     }
 
+    public function setId(int $id): ?int
+    {
+        $this->id = $id;
+
+        return $this->id;
+    }
+
+
     public function getTypeMaillot(): ?string
     {
         return $this->typeMaillot;

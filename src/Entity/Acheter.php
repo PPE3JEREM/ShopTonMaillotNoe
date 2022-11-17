@@ -45,6 +45,14 @@ class Acheter
         return $this->id;
     }
 
+    public function setId(int $id): ?int
+    {
+        $this->id = $id;
+
+        return $this->id;
+    }
+
+
     public function getQuantite(): ?int
     {
         return $this->quantite;
