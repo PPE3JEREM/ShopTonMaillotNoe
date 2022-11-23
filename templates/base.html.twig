@@ -9,22 +9,19 @@
           {% block stylesheets %}{% endblock %}
     </head>
     <body>
-     </nav>
-           <nav class="navbar navbar-light bg-light">
-     <a class="navbar-brand" href="#">
-    <img src="/img/logojersey.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
-     SHOPTONMAILLOT 
-  </a>
-    <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-  </form>
-</nav>
-          
-     </nav>
+    <nav class="navbar navbar-light bg-light">
+            <a class="navbar-brand" href="{{path('accueil')}}">
+            <img src="/img/logojersey.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+            SHOPTONMAILLOT 
+            </a>
+            <form class="form-inline">
+            <input class="form-control col-auto" type="search" placeholder="Rechercher" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
+        </form>
+    </nav>
 
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div class="container">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary ">
+            <div class="container text-center">
 
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav mr-auto">
@@ -33,9 +30,11 @@
                     </a>
                     </li>
         <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes des Equipes</a>
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="true">Listes des Equipes</a>
                     <div class="dropdown-menu">
-                            <a class="dropdown-item" href="">PSG</a>
+                      <div class="d-flex justify-content-center">
+                         <a class="dropdown-item " href="">FC Barcelone</a>
+                        <a class="dropdown-item " href="">PSG</a>
                         <a class="dropdown-item" href="">Manchester United</a>
                         <a class="dropdown-item" href="">Clippers</a>
                         <a class="dropdown-item" href="">Warriors</a>
@@ -48,6 +47,7 @@
             <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Listes des Sports</a>
                     <div class="dropdown-menu">
+                    <div class="d-flex justify-content-center">
                         <a class="dropdown-item" href="">Football</a>
                         <a class="dropdown-item" href="">Basetball</a>
                         <a class="dropdown-item" href="">Esport</a>
@@ -57,6 +57,7 @@
                         <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
                     <div class="dropdown-menu">
+                    <div class="d-flex justify-content-center">
                         <a class="dropdown-item" href="">Gestion des sports</a>
                         <a class="dropdown-item" href="">Gestion des maillots</a>
                         <a class="dropdown-item" href=" ">Gestion des comptes</a>
@@ -64,7 +65,7 @@
                 </li>
             </div>
             </ul>
-         </nav>
+    </nav>
     <div class="container">
     {# affiche tout les messages flashs #}
     {% for label, messages in app.flashes %}
