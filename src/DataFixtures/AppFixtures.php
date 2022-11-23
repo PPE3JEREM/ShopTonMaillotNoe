@@ -88,13 +88,14 @@ $manager->flush();
 // }
 
 }
-public function chargeFichier($fichier){
-$fichierCsv=fopen(__DIR__."/".$fichier,"r");
-while (!feof($fichierCsv)) {
-$data[]=fgetcsv($fichierCsv);
-}
-fclose($fichierCsv);
-return $data;
 
+  public function chargeFichier($fichier){
+    $fichierCsv=fopen(__DIR__."/".$fichier,"r");
+      while (!feof($fichierCsv)) {
+        $data[]=fgetcsv($fichierCsv);
+      }
+      fclose($fichierCsv);
+      return $data;  
 }
+
 }
