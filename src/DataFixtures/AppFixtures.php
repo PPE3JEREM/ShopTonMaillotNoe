@@ -14,45 +14,20 @@ class AppFixtures extends Fixture
 {
         public function load(ObjectManager $manager): void
     {
-<<<<<<< HEAD
-        // $product = new Product();
-        // $manager->persist($product);
 
-    //     $lesSports=$this->chargeFichier("sport.csv");
-    //     foreach ($lesSports as $value) {
-    //       $sport=new Sport();
-    //       $sport ->setId(intval($value[0]))
-    //                ->setNom($value[1])
-    //                ->setCouleur();
-    //       $manager->persist($sport);
-    //       $this->addReference("style".$sport->getId(),$sport);
-
-    //   }
-    //      }
-
-    // public function chargeFichier($fichier){
-    //   $fichierCsv=fopen(DIR."/".$fichier,"r");
-    //     while (!feof($fichierCsv)) {
-    //       $data[]=fgetcsv($fichierCsv);
-    //     }
-    //     fclose($fichierCsv);
-    //     return $data;
-
-=======
->>>>>>> 2771c11cab4ace7810323bfc3cb382fe6db86a57
         $lesSports=$this->chargeFichier("sport.csv");
         foreach ($lesSports as $value) {
           $sport=new Sport();
-          $sport   ->setId(intval($value[0]));
-          $sport   ->setLibelle($value[1]);
-          $sport   ->setImage($value[2]);
+          $sport ->setId(intval($value[0]));
+          $sport  ->setlibelle($value[1]);
+          $sport  ->setimage($value[2]);
           $manager->persist($sport);
-          $this->addReference("sport".$sport->getId(),$sport);
-          $manager->flush();
+          $this->addReference("style".$sport->getId(),$sport);
+ 
+      }
           
 
-      }
-
+       
         $lesEquipes=$this->chargeFichier("equipe.csv");
         foreach ($lesEquipes as $value) {
           $equipe=new Equipe();
@@ -85,23 +60,31 @@ class AppFixtures extends Fixture
               $manager->flush();
         
 
-    }
-    }
-    public function chargeFichier($fichier){
-      $fichierCsv=fopen(__DIR__."/".$fichier,"r");
-        while (!feof($fichierCsv)) {
-          $data[]=fgetcsv($fichierCsv);
-        }
-        fclose($fichierCsv);
-        return $data;
-<<<<<<< HEAD
-        
-    
-=======
-            
->>>>>>> 2771c11cab4ace7810323bfc3cb382fe6db86a57
-    
-    }
+    }   
 
+    $LesPaniers=$this->chargeFichier("panier.csv");
+        foreach ($LesPaniers as $value) {
+          $panier=new Panier();
+          $panier   ->setId(intval($value[0]));
+          $panier   ->setDatePanier($value[1]);
+          $panier   ->setMoyenPaiement($value[2]);
+          //$panier   ->setSport($this->getReference("panier".intval($value[3])));
+          $manager->persist($panier);
+          $this->addReference("panier".$panier->getId(),$panier);
+          $manager->flush();
+        
+
+    }
+  }
+  public function chargeFichier($fichier){
+    $fichierCsv=fopen(__DIR__."/".$fichier,"r");
+      while (!feof($fichierCsv)) {
+        $data[]=fgetcsv($fichierCsv);
+      }
+      fclose($fichierCsv);
+      return $data;  
 }
+}
+
     
+ 
