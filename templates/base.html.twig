@@ -58,7 +58,7 @@
                            <img src="/img/g2.jpg" width="25" height="25" class="d-inline-block align-top" alt="" loading="lazy"> 
                         </a>
                         <a class="dropdown-item" href="">Kcorp
-                           <img src="/img/karminelogo.svg" width="26" height="25" class="d-inline-block align-top" alt="" loading="lazy"> 
+                           <img src="/img/karminelogo.svg" width="25" height="25" class="d-inline-block align-top" alt="" loading="lazy"> 
                         </a>
                     </div>
                 </li>
@@ -76,9 +76,10 @@
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administration</a>
                     <div class="dropdown-menu">
                     <div class="d-flex justify-content-center">
-                        <a class="dropdown-item" href="">Gestion des sports</a>
-                        <a class="dropdown-item" href="">Gestion des maillots</a>
-                        <a class="dropdown-item" href=" ">Gestion des comptes</a>
+                        <a class="dropdown-item" href="/sport">Gestion des sports</a>
+                        <a class="dropdown-item" href="/equipe">Gestion des equipes</a>
+                        <a class="dropdown-item" href="/maillot">Gestion des maillots</a>
+                        <a class="dropdown-item" href="/compte">Gestion des comptes</a>
                     </div>
                 </li>
             </div>
@@ -98,3 +99,18 @@
      {% for label, messages in app.flashes %}
         <div class="container">
             <div class="alert alert-{{label}}">
+              {% for message in messages %}
+                 <p> {{message|raw}} </p>
+              {% endfor %}
+            </div>
+         </div>
+    {% endfor %}
+ {% endblock %}
+    </div>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>

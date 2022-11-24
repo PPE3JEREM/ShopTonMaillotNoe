@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Maillot{% endblock %}
+
+{% block body %}
+    <h1>Edit Maillot</h1>
+
+    {{ include('maillot/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_maillot_index') }}">back to list</a>
+
+    {{ include('maillot/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Maillot index{% endblock %}
+
+{% block body %}
+    <h1>Maillot index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TypeMaillot</th>
+                <th>Saison</th>
+                <th>Image</th>
+                <th>Matiere</th>
+                <th>Taille</th>
+                <th>Prix</th>
+                <th>Description</th>
+                <th>Disponibilite</th>
+                <th>Stock</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for maillot in maillots %}
+            <tr>
+                <td>{{ maillot.id }}</td>
+                <td>{{ maillot.typeMaillot }}</td>
+                <td>{{ maillot.Saison }}</td>
+                <td>{{ maillot.image }}</td>
+                <td>{{ maillot.matiere }}</td>
+                <td>{{ maillot.taille }}</td>
+                <td>{{ maillot.prix }}</td>
+                <td>{{ maillot.description }}</td>
+                <td>{{ maillot.disponibilite }}</td>
+                <td>{{ maillot.stock }}</td>
+                <td>
+                    <a href="{{ path('app_maillot_show', {'id': maillot.id}) }}">show</a>
+                    <a href="{{ path('app_maillot_edit', {'id': maillot.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="11">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_maillot_new') }}">Create new</a>
+{% endblock %}
