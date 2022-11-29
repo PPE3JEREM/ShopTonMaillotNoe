@@ -2,13 +2,14 @@
 
 namespace App\DataFixtures;
 
+
 use App\Entity\Sport;
+use App\Entity\Equipe;
+use App\Entity\Panier;
 use App\Entity\Acheter;
 use App\Entity\Maillot;
-use App\Entity\Panier;
-use App\Entity\Equipe;
-use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class AppFixtures extends Fixture
 {
@@ -22,22 +23,22 @@ class AppFixtures extends Fixture
           $sport  ->setlibelle($value[1]);
           $sport  ->setimage($value[2]);
           $manager->persist($sport);
-          $this->addReference("style".$sport->getId(),$sport);
+          $this->addReference("sport".$sport->getId(),$sport);
  
       }
           
 
        
-        // $lesEquipes=$this->chargeFichier("equipe.csv");
-        // foreach ($lesEquipes as $value) {
-        //   $equipe=new Equipe();
-        //   $equipe   ->setId(intval($value[0]));
-        //   $equipe   ->setLibelle($value[1]);
-        //   $equipe   ->setImage($value[2]);
-        //   $equipe   ->setSport($this->getReference("sport".intval($value[3])));
-        //   $manager->persist($equipe);
-        //   $this->addReference("equipe".$equipe->getId(),$equipe);
-        //   $manager->flush();
+        $lesEquipes=$this->chargeFichier("equipe.csv");
+        foreach ($lesEquipes as $value) {
+          $equipe=new Equipe();
+          $equipe   ->setId(intval($value[0]));
+          $equipe   ->setLibelle($value[1]);
+          $equipe   ->setImage($value[2]);
+          $equipe   ->setSport($this->getReference("sport".intval($value[3])));
+          $manager->persist($equipe);
+          $this->addReference("equipe".$equipe->getId(),$equipe);
+          $manager->flush();
         
 
     //}
@@ -88,6 +89,8 @@ class AppFixtures extends Fixture
     //   }
 
   }
+}
+
   public function chargeFichier($fichier){
     $fichierCsv=fopen(__DIR__."/".$fichier,"r");
       while (!feof($fichierCsv)) {
