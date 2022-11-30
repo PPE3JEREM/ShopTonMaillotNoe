@@ -3,15 +3,16 @@
 {% block title %}Equipe index{% endblock %}
 
 {% block body %}
-    <h1>Equipe index</h1>
+    <h1 class="pt-2 text-center">Liste des équipes</h1>
+    <a class= "btn btn-success"href="{{ path('app_equipe_new') }}">Créer une nouvelle équipe</a>
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Libelle</th>
-                <th>Image</th>
-                <th>actions</th>
+                <th>Nom de l'équipe</th>
+                <th>Lien image</th>
+                <th>Que veux tu faire ?</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +22,17 @@
                 <td>{{ equipe.libelle }}</td>
                 <td>{{ equipe.image }}</td>
                 <td>
-                    <a href="{{ path('app_equipe_show', {'id': equipe.id}) }}">show</a>
-                    <a href="{{ path('app_equipe_edit', {'id': equipe.id}) }}">edit</a>
+                    <a class= "btn btn-info" href="{{ path('app_equipe_show', {'id': equipe.id}) }}">Voir la fiche</a>
+                    <a class= "btn btn-warning" href="{{ path('app_equipe_edit', {'id': equipe.id}) }}">Modifier l'équipe</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Pas d'équipe trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_equipe_new') }}">Create new</a>
+    
 {% endblock %}

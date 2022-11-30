@@ -87,4 +87,11 @@ class EquipeController extends AbstractController
 
         return $this->redirectToRoute('app_equipe_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    public function ListeEquipeSimple(EquipeRepository $equipeRepository)
+    {
+        return $this->render('equipe/dropdownequipe.html.twig', [
+            'equipes' => $equipeRepository->findAll(),
+        ]);
+    }
 }

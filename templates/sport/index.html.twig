@@ -3,15 +3,15 @@
 {% block title %}Sport index{% endblock %}
 
 {% block body %}
-    <h1>Sport index</h1>
-
+    <h1 class = "pt-2 text-center">Liste des Sports</h1>
+    <h1><a class= "btn btn-success" href="{{ path('app_sport_new') }}">Créer un nouveau sport</a></h1>
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Libelle</th>
-                <th>Image</th>
-                <th>actions</th>
+                <th>Nom du sport</th>
+                <th>Lien image</th>
+                <th>Que veux tu faire ?</th>
             </tr>
         </thead>
         <tbody>
@@ -21,17 +21,16 @@
                 <td>{{ sport.libelle }}</td>
                 <td>{{ sport.image }}</td>
                 <td>
-                    <a href="{{ path('app_sport_show', {'id': sport.id}) }}">show</a>
-                    <a href="{{ path('app_sport_edit', {'id': sport.id}) }}">edit</a>
+                    <a class= "btn btn-info" href="{{ path('app_sport_show', {'id': sport.id}) }}">Voir la fiche</a>
+                    <a class= "btn btn-warning" href="{{ path('app_sport_edit', {'id': sport.id}) }}">Modifier le sport</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="4">Pas de sport trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('app_sport_new') }}">Create new</a>
+    
 {% endblock %}

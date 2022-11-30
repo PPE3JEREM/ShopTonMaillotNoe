@@ -3,15 +3,15 @@
 {% block title %}Maillot index{% endblock %}
 
 {% block body %}
-    <h1>Maillot index</h1>
-
+    <h1 class="pt-2 text-center">Maillot</h1>
+<a class="btn btn-success" href="{{ path('app_maillot_new') }}">Créer un nouveau maillot</a>
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+
+                <th>Image</th>
                 <th>TypeMaillot</th>
                 <th>Saison</th>
-                <th>Image</th>
                 <th>Matiere</th>
                 <th>Taille</th>
                 <th>Prix</th>
@@ -24,10 +24,10 @@
         <tbody>
         {% for maillot in maillots %}
             <tr>
-                <td>{{ maillot.id }}</td>
+                
+                <td><img src="{{ asset('img/maillotbarcamatchlogo.jpg') }}" width="50px" height="50px" alt=""></td>
                 <td>{{ maillot.typeMaillot }}</td>
                 <td>{{ maillot.Saison }}</td>
-                <td>{{ maillot.image }}</td>
                 <td>{{ maillot.matiere }}</td>
                 <td>{{ maillot.taille }}</td>
                 <td>{{ maillot.prix }}</td>
@@ -35,17 +35,17 @@
                 <td>{{ maillot.disponibilite }}</td>
                 <td>{{ maillot.stock }}</td>
                 <td>
-                    <a href="{{ path('app_maillot_show', {'id': maillot.id}) }}">show</a>
-                    <a href="{{ path('app_maillot_edit', {'id': maillot.id}) }}">edit</a>
+                    <a class= "btn btn-info" href="{{ path('app_maillot_show', {'id': maillot.id}) }}">show</a>
+                    <a class= "btn btn-warning" href= "{{ path('app_maillot_edit', {'id': maillot.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <td colspan="11">Pas de maillot trouvé</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('app_maillot_new') }}">Create new</a>
+    
 {% endblock %}
