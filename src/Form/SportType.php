@@ -23,4 +23,8 @@ class SportType extends AbstractType
             'data_class' => Sport::class,
         ]);
     }
+
+    public function __toString(){
+        return $this->champ; // Remplacer champ par une propriété "string" de l'entité
+    }   
 }

@@ -68,11 +68,6 @@ class Maillot
      */
     private $equipe;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Acheter::class, inversedBy="maillot")
-     */
-    private $acheter;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -202,18 +197,6 @@ class Maillot
     public function setEquipe(?Equipe $equipe): self
     {
         $this->equipe = $equipe;
-
-        return $this;
-    }
-
-    public function getAcheter(): ?Acheter
-    {
-        return $this->acheter;
-    }
-
-    public function setAcheter(?Acheter $acheter): self
-    {
-        $this->acheter = $acheter;
 
         return $this;
     }

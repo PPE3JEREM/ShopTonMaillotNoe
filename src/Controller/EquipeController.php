@@ -94,4 +94,14 @@ class EquipeController extends AbstractController
             'equipes' => $equipeRepository->findAll(),
         ]);
     }
+
+     /**
+     * @Route("/boutique/{id}", name="affichemaillot-equipe", methods={"GET"})
+     */
+    public function showbarca(Equipe $equipe): Response
+    {
+        return $this->render('equipe/'.$equipe->getLibelle().'.html.twig', [
+            'equipe' => $equipe,
+        ]);
+    }
 }

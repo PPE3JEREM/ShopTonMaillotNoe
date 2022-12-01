@@ -2,9 +2,11 @@
 
 namespace App\Form;
 
+use App\Entity\Equipe;
 use App\Entity\Maillot;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class MaillotType extends AbstractType
@@ -21,9 +23,12 @@ class MaillotType extends AbstractType
             ->add('description')
             ->add('disponibilite')
             ->add('stock')
-            ->add('equipe')
-            ->add('acheter')
-        ;
+            ->add('equipe', EntityType::class,[
+                'class'=>Equipe::class,
+                'choice_label'=>'libelle',
+                'label'=>"equipe du maillot"
+            ]);
+    
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -6,7 +6,6 @@ namespace App\DataFixtures;
 use App\Entity\Sport;
 use App\Entity\Equipe;
 use App\Entity\Panier;
-use App\Entity\Acheter;
 use App\Entity\Maillot;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
