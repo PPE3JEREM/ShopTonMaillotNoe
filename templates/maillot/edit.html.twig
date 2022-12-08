@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Maillot{% endblock %}
+{% block title %}Modifier Maillot{% endblock %}
 
 {% block body %}
-    <h1>Edit Maillot</h1>
+    <h1>Modifier le Maillot</h1>
 
-    {{ include('maillot/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('maillot/_form.html.twig', {'button_label': 'Sauvegarder'}) }}
 
-    <a href="{{ path('app_maillot_index') }}">back to list</a>
+    <a class="btn btn-info" href="{{ path('app_maillot_index') }}">Revenir à la liste des maillots</a>
 
     {{ include('maillot/_delete_form.html.twig') }}
 {% endblock %}

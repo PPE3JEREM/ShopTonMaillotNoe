@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Maillot{% endblock %}
+{% block title %}Nouveau Maillot{% endblock %}
 
 {% block body %}
-    <h1>Create new Maillot</h1>
+    <h1>Créer un nouveau Maillot</h1>
 
     {{ include('maillot/_form.html.twig') }}
 
-    <a href="{{ path('app_maillot_index') }}">back to list</a>
+    <a class="btn btn-info" href="{{ path('app_maillot_index') }}">Revenir à la liste des maillots</a>
 {% endblock %}

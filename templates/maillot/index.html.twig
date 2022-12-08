@@ -35,8 +35,8 @@
                 <td>{{ maillot.disponibilite }}</td>
                 <td>{{ maillot.stock }}</td>
                 <td>
-                    <a class= "btn btn-info" href="{{ path('app_maillot_show', {'id': maillot.id}) }}">show</a>
-                    <a class= "btn btn-warning" href= "{{ path('app_maillot_edit', {'id': maillot.id}) }}">edit</a>
+                    <a class= "btn btn-info" href="{{ path('app_maillot_show', {'id': maillot.id}) }}">Voir le maillot</a>
+                    <a class= "btn btn-warning" href= "{{ path('app_maillot_edit', {'id': maillot.id}) }}">Modif maillot</a>
                 </td>
             </tr>
         {% else %}

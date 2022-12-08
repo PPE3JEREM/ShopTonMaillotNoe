@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Sport{% endblock %}
+{% block title %}Créer un nouveau Sport{% endblock %}
 
 {% block body %}
-    <h1>Create new Sport</h1>
+    <h1>Créer un nouveau Sport</h1>
 
     {{ include('sport/_form.html.twig') }}
 
-    <a href="{{ path('app_sport_index') }}">back to list</a>
+    <a class="btn btn-info"href="{{ path('app_sport_index') }}" class= "btn btn-warning">Revenir à la liste des sports</a>
 {% endblock %}

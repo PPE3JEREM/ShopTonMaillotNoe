@@ -50,9 +50,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_maillot_index') }}">back to list</a>
+    <a class="btn btn-info" href="{{ path('app_maillot_index') }}">Revenir à la liste des maillots</a>
 
-    <a href="{{ path('app_maillot_edit', {'id': maillot.id}) }}">edit</a>
+    <a class="btn btn-warning" href="{{ path('app_maillot_edit', {'id': maillot.id}) }}">Modifier le maillot</a>
 
     {{ include('maillot/_delete_form.html.twig') }}
 {% endblock %}
