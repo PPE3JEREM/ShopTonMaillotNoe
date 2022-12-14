@@ -1,1 +1,38 @@
 {% extends "base.html.twig" %}
+{% block body %}
+<h1 class="text-center">MAILLOT EN VENTE ACTUELLEMENT :</h1>
+<div class="row">
+<div class="col">
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{{ asset('img/maillotunitedmatch2022.jpg') }}" width="200" height="200px" alt="">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Maillot domicile 2022-2023</h5>
+        <p class="card-text">Maillot en forme de polo qui fait très nostalgique de l'époque Cantona</p>
+        <a class="btn btn-success"> Acheter </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col">
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+    <img src="{{ asset('img/maillotunitedmatchext2022.jpg') }}" width="200" height="200px" alt="">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Maillot exterieur 2022-2023</h5>
+        <p class="card-text">Le maillot extérieur est très simple avec une couleur souvent utilisé pour le club</p>
+        <a class="btn btn-success"> Acheter </a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+{% endblock %}
