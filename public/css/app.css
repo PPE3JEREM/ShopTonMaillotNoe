@@ -1,5 +1,8 @@
 .avatar{
-    border-radius: 50%;
+    border-radius: 15%;
+    width: 3.5rem; 
+    height: 3.5rem;
+    border: 0.1rem solid white;
 }
 
 .miniature{
@@ -11,7 +14,14 @@
     bottom: 100px;
 }
 .gras{
-    font-weight : 800   
+    font-weight : 800;  
 }
 
+.color-white{
+    color:white;
+}
+
+.border-input{
+    
+}
 
