@@ -1,4 +1,35 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+   
+    <div class="">
+        <div class="row"> 
+            <div class="col-4">{{ form_row(form.image) }}</div> 
+            <div class="col-4">{{ form_row(form.typeMaillot)}}</div>
+            <div class="col-4">{{ form_row(form.Saison) }}</div>  
+        </div>
+
+        <div class="row">
+            <div class="col-4">{{ form_row(form.matiere) }}</div>
+            <div class="col-4">{{ form_row(form.taille) }}</div>
+            <div class="col-4">{{ form_row(form.prix) }}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-3">{{ form_row(form.description) }}</div>
+            <div class="col-3 ">{{ form_row(form.disponibilite) }}</div>
+            <div class="col-3">{{ form_row(form.stock) }}</div>
+            <div class="col-3">{{ form_row(form.equipe) }}</div>
+        </div>
+    </div>
     <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
+    
 {{ form_end(form) }}
+
+{# <td>{{ maillot.typeMaillot }}</td>
+                <td>{{ maillot.Saison }}</td>
+                <td>{{ maillot.matiere }}</td>
+                <td>{{ maillot.taille }}</td>
+                <td>{{ maillot.prix }}</td>
+                <td>{{ maillot.description }}</td>
+                <td>{{ maillot.disponibilite }}</td>
+                <td>{{ maillot.stock }}</td> #}

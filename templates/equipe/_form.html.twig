@@ -1,4 +1,11 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    
+    <div class="">
+        <div class="row"> 
+            <div class="col-4">{{ form_row(form.image) }}</div> 
+            <div class="col-4">{{ form_row(form.libelle)}}</div>
+            <div class="col-4">{{ form_row(form.sport)}}</div>
+        </div>
+    </div>
     <button class="btn btn-success">{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}
