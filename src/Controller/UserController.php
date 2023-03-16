@@ -34,7 +34,19 @@ class UserController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) 
+        {
+            //On écupère l'image sélectionnée
+            $fichierImage=$form->get('avatarFile')->getData();
+            if($fichierImage != null){
+                //On supprime l'ancien fichier
+                \unlink($this->getParameter('imagesutilisateurDestination').$user->getAvatar());
+                //On crée le nouveau fichier
+                $fichier=md5(\uniqid()).".".$fichierImage->guessExtension();
+                //On déplace le dossier charger dans le dossier public
+                $fichierImage->move($this->getParameter('imagesutilisateurDestination'),$fichier);
+                $user->setAvatar($fichier);
+            }
             $userRepository->add($user, true);
 
             return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);

@@ -7,11 +7,18 @@
         <div class="col-4">{{ form_row(form.prenom) }}</div>
     </div>
     <div class="row">
-        <div class="col-4">{{ form_row(form.sexe) }}</div>
-        <div class="col-4">{{ form_row(form.avatarFile) }}</div>
-        <div class="col-4">{{ form_row(form.pseudo) }}</div>
+        <div class="col-3">{{ form_row(form.sexe) }}</div>
+        <div class="col-3">{{ form_row(form.pseudo) }}</div>
+        <div class="col-3">{{ form_row(form.avatarFile) }}</div>
+    </div>
+    <div class="row">
+    <div class="col-3">
+        <img src=" {{asset("img/avatar/" ~ form.avatar.vars.value) }} " id="avatarAffichee" class="rounded mx-auto d-block avatarmidget">
+        <a class="btn btn-primary d-block center" id="chargeAvatar"><i class="fas fa-upload"> </i> Charger l'avatar</a>
+    </div>
     </div>
 </div>
 
-{{ form_end(form) }}
 <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+<script src=" {{asset("js/gestionUpload.js")}} " defer></script>

@@ -35,9 +35,25 @@
                 {{ form_row(registrationForm.plainPassword, {'attr':{'class': 'form-control border border-dark'}}) }}
             </div>
         </div>
-        {{ form_row(registrationForm.avatar, {'attr':{'class': 'form-control border border-dark'}}) }}
+        {# <img src=" {{asset("img/avatar/" ~ registrationForm.avatar.vars.value) }} " id="avatarAffichee" class="rounded mx-auto d-block avatarmidget">
+        <a class="btn btn-primary d-block center" id="chargeAvatar"><i class="fas fa-upload"> </i> Charger l'avatar</a> #}
+        <div class="form-field col-xs3 col-lg3 col-md2 row-lg4 row-sm3 row-md2 bd-black bd-solid bd-3 p-5 rounded-2 avatar-form">
+                <div>
+                    <img class="responsive-media mb-2 bd-black bd-solid bd-3 image-avatar-form" src="img/avatar/{{registrationForm.avatar.vars.value}}" alt="Photo de profil" id="avatarAffichee">
+                </div>
+                <div>
+                    {{form_row(registrationForm.avatarFile)}}
+                    {{form_errors(registrationForm.avatarFile)}}
+                    <a id="chargeAvatar" class="btn btn-upload-image shadow-1 primary rounded-4 btn-large primary mr-2 px-5">
+                         Déposer une image
+                    </a>
+                </div>
+
+            </div>        
         {{ form_row(registrationForm.agreeTerms) }}
-            <button type="submit" classform-group="btn">S'inscrire</button>
+        <button type="submit" classform-group="btn">S'inscrire</button>
     </div>
     {{ form_end(registrationForm) }}
+    <script src=" {{asset("js/gestionUpload.js")}} " defer></script>
 {% endblock %}
+
