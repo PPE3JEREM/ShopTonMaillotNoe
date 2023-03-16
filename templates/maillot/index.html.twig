@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Maillot index{% endblock %}
+{% block title %}Listes Des Maillots{% endblock %}
 
 {% block body %}
-    <h1 class="pt-2 text-center">Maillot</h1>
+    <h1 class="pt-2 text-center">Listes des Maillot</h1>
 <a class="btn btn-success" href="{{ path('app_maillot_new') }}">Créer un nouveau maillot</a>
+{{ form_start(formFiltreMaillot) }}
+    {{ form_row(formFiltreMaillot.description) }}
+   <button type="submit" class ="btn btn-warning">Rechercher</button>
+{{ form_end(formFiltreMaillot) }}
     <table class="table">
         <thead>
             <tr>
@@ -36,7 +40,7 @@
                 <td>{{ maillot.stock }}</td>
                 <td>
                     <a class= "btn btn-info" href="{{ path('app_maillot_show', {'id': maillot.id}) }}">Voir le maillot</a>
-                    <a class= "btn btn-warning" href= "{{ path('app_maillot_edit', {'id': maillot.id}) }}">Modif maillot</a>
+                    <a class= "btn btn-warning" href= "{{ path('app_maillot_edit', {'id': maillot.id}) }}">Modification du maillot</a>
                 </td>
             </tr>
         {% else %}

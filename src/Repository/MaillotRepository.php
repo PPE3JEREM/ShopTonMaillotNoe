@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Maillot;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use LDAP\Result;
 
 /**
  * @extends ServiceEntityRepository<Maillot>
@@ -39,20 +40,23 @@ class MaillotRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Maillot[] Returns an array of Maillot objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+   /**
+     * @return Maillot[] Returns an array of Maillot objects
+    */
+    public function reposito($description = null): array
+   {
+       $result =  $this->createQueryBuilder('m')
+           ->select('m')
+           ->orderBy('m.id', 'ASC')
+           ->getQuery()
+           ->getResult();
+           if($description!=null){
+                $result->andWhere('m.description like :nomcherche')
+                ->setParameter('nomcherche', "%{$description}%");
+           }
+           ;
+          return $result;
+   }
 
 //    public function findOneBySomeField($value): ?Maillot
 //    {

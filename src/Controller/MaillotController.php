@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Controller;
-
 use App\Entity\Maillot;
+use App\Form\FiltreMaillotType;
 use App\Form\MaillotType;
 use App\Repository\MaillotRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,10 +18,18 @@ class MaillotController extends AbstractController
     /**
      * @Route("/", name="app_maillot_index", methods={"GET"})
      */
-    public function index(MaillotRepository $maillotRepository): Response
+    public function index(MaillotRepository $maillotRepository, Request $request): Response
     {
+        $description=null;
+        $formFiltreMaillot=$this->createForm(FiltreMaillotType::class);
+        $formFiltreMaillot->handleRequest($request);
+        if($formFiltreMaillot->isSubmitted() && $formFiltreMaillot->isValid()){
+            $description=$formFiltreMaillot->get('description')->getData();
+        } 
+        $maillotRepository->reposito($description); 
         return $this->render('maillot/index.html.twig', [
             'maillots' => $maillotRepository->findAll(),
+            'formFiltreMaillot'=>$formFiltreMaillot->createView()
         ]);
     }
 
@@ -30,6 +38,7 @@ class MaillotController extends AbstractController
      */
     public function new(Request $request, MaillotRepository $maillotRepository): Response
     {
+        
         $maillot = new Maillot();
         $form = $this->createForm(MaillotType::class, $maillot);
         $form->handleRequest($request);
