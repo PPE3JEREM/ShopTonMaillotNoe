@@ -101,7 +101,7 @@
        Voulez vous achetez le maillot ?
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+        <button id="bouton-achat" type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
         <a class="btn btn-success" href=""> Acheter le Maillot</a>
       </div>
     </div>
@@ -151,6 +151,19 @@
     </div>
   </div>
 </div>
+
+
+<script>
+const buyButton = document.querySelector(".btn-success");
+
+buyButton.addEventListener("click", function() {
+  document.body.style.backgroundColor = "green";
+  setTimeout(function() {
+    document.body.style.backgroundColor = "";
+  }, 3000);
+});
+</script>
+
 {% endblock %}
 
 
