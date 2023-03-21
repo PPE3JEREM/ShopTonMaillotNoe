@@ -8,14 +8,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class FiltreMaillotType extends AbstractType
+class FiltreEquipeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('description', TextType::class, [
+            ->add('libelle', TextType::class,[
                 'attr'=>[
-                    'placeholder'=>"Saisir le nom d'un maillot"
+                    'placeholder'=>"Saisir le nom de l'équipe"
                 ],
                 'required'=>false,
                 'label'=>false
@@ -23,7 +23,6 @@ class FiltreMaillotType extends AbstractType
             ->add('Rechercher', SubmitType::class,[
                 'label'=>"Rechercher"
             ])
-   
         ;
     }
 
@@ -31,8 +30,7 @@ class FiltreMaillotType extends AbstractType
     {
         $resolver->setDefaults([
             // Configure your form options here
-            'method'=>'get',
-            'csrf_protection'=>false
+            'method'=>'get'
         ]);
     }
 }

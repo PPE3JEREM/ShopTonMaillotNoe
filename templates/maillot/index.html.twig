@@ -5,10 +5,12 @@
 {% block body %}
     <h1 class="pt-2 text-center">Listes des Maillot</h1>
 <a class="btn btn-success" href="{{ path('app_maillot_new') }}">Créer un nouveau maillot</a>
-{{ form_start(formFiltreMaillot) }}
+
+    {{ form_start(formFiltreMaillot) }}
     {{ form_row(formFiltreMaillot.description) }}
-   <button type="submit" class ="btn btn-warning">Rechercher</button>
-{{ form_end(formFiltreMaillot) }}
+    {{ form_row(formFiltreMaillot.Rechercher) }}
+    {{ form_end(formFiltreMaillot) }}
+
     <table class="table">
         <thead>
             <tr>
@@ -36,7 +38,11 @@
                 <td>{{ maillot.taille }}</td>
                 <td>{{ maillot.prix }}</td>
                 <td>{{ maillot.description }}</td>
-                <td>{{ maillot.disponibilite }}</td>
+                <td>{% if maillot.disponibilite == NULL %}
+                        Pas disponible
+                    {% elseif maillot.disponibilite == 1 %}
+                        En stock
+                    {% endif %}</td>
                 <td>{{ maillot.stock }}</td>
                 <td>
                     <a class= "btn btn-info" href="{{ path('app_maillot_show', {'id': maillot.id}) }}">Voir le maillot</a>

@@ -39,6 +39,20 @@ class EquipeRepository extends ServiceEntityRepository
         }
     }
 
+
+
+   /**
+    * @return Equipe[] Returns an array of Equipe objects
+    */
+   public function findByNom($libelle): array
+   {
+       return $this->createQueryBuilder('e')
+           ->andWhere('e.libelle like :libelle')
+           ->setParameter(':libelle',"%$libelle%")
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 //    /**
 //     * @return Equipe[] Returns an array of Equipe objects
 //     */

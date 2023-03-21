@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Equipe;
 use App\Form\EquipeType;
+use App\Form\FiltreEquipeType;
 use App\Repository\EquipeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,12 +19,24 @@ class EquipeController extends AbstractController
     /**
      * @Route("/", name="app_equipe_index", methods={"GET"})
      */
-    public function index(EquipeRepository $equipeRepository): Response
-    {
-        return $this->render('equipe/index.html.twig', [
-            'equipes' => $equipeRepository->findAll(),
-        ]);
+    public function index(EquipeRepository $equipeRepository, Request $request): Response
+{
+    $formFiltreEquipe = $this->createForm(FiltreEquipeType::class);
+    $formFiltreEquipe->handleRequest($request);
+
+    $libelle = null;
+    if ($formFiltreEquipe->isSubmitted() && $formFiltreEquipe->isValid()) {
+        $libelle = $formFiltreEquipe->get('libelle')->getData();
     }
+
+    $equipes = $libelle ? $equipeRepository->findByNom($libelle) : $equipeRepository->findAll();
+
+    return $this->render('equipe/index.html.twig', [
+        'equipes' => $equipes,
+        'formFiltreEquipe' => $formFiltreEquipe->createView()
+    ]);
+}
+
 
     /**
      * @Route("/new", name="app_equipe_new", methods={"GET", "POST"})

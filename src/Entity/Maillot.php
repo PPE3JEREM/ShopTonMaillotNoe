@@ -53,7 +53,7 @@ class Maillot
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="boolean")
      */
     private $disponibilite;
 

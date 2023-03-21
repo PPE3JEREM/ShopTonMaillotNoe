@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class MaillotType extends AbstractType
 {
@@ -21,7 +22,12 @@ class MaillotType extends AbstractType
             ->add('taille')
             ->add('prix')
             ->add('description')
-            ->add('disponibilite')
+            ->add('disponibilite', ChoiceType::class,[
+                'choices'=>[
+                    'En stock'=>1,
+                    'Pas disponible'=>0
+                ]
+            ])
             ->add('stock')
             ->add('equipe', EntityType::class,[
                 'class'=>Equipe::class,

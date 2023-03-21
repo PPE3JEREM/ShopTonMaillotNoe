@@ -6,6 +6,11 @@
     <h1 class="pt-2 text-center">Liste des équipes</h1>
     <a class= "btn btn-success"href="{{ path('app_equipe_new') }}">Créer une nouvelle équipe</a>
 
+    {{ form_start(formFiltreEquipe) }}
+    {{ form_row(formFiltreEquipe.libelle) }}
+    {{ form_row(formFiltreEquipe.Rechercher) }}
+    {{ form_end(formFiltreEquipe) }}
+    
     <table class="table">
         <thead>
             <tr>

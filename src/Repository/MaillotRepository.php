@@ -46,7 +46,6 @@ class MaillotRepository extends ServiceEntityRepository
     public function reposito($description = null): array
    {
        $result =  $this->createQueryBuilder('m')
-           ->select('m')
            ->orderBy('m.id', 'ASC')
            ->getQuery()
            ->getResult();
@@ -56,6 +55,16 @@ class MaillotRepository extends ServiceEntityRepository
            }
            ;
           return $result;
+   }
+
+   public function findByNom($description): array
+   {   
+       return $this->createQueryBuilder('e')
+           ->andWhere('e.description like :description')
+           ->setParameter(':description',"%$description%")
+           ->getQuery()
+           ->getResult()
+       ;
    }
 
 //    public function findOneBySomeField($value): ?Maillot
